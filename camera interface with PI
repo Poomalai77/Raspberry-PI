@@ -1,0 +1,10 @@
+sudo raspi-config
+
+sudo reboot
+
+libcamera-still -o test.jpg
+
+sudo apt install fswebcam
+
+fswebcam image.jpg
+

@@ -1,0 +1,23 @@
+sudo apt-get install python3-rpi.gpio
+pip install twilio
+Also Requires:
+Twilio account: https://www.twilio.com/whatsapp
+WhatsApp sandbox setup
+Twilio SID and Auth Token
+
+PROGRAM :
+
+import RPi.GPIO as GPIO
+import time
+import pywhatkit
+
+sensor_pin = 17
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(sensor_pin, GPIO.IN)
+
+while True:
+    if GPIO.input(sensor_pin) == 0:  # Flame detected
+        print("🔥 Flame Detected!")
+        pywhatkit.sendwhatmsg_instantly("+91xxxxxxxxxx", "🔥 Fire Alert! Flame detected by Raspberry Pi", 10)
+        time.sleep(10)
+    time.sleep(1)
